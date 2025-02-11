@@ -1,19 +1,19 @@
 package com.acolyptos.inventory.models;
 
-import java.util.UUID;
+import org.bson.types.ObjectId;
 
 public class Supplier {
-  private String id, name, contactName, contactNumber, email;
+  private ObjectId id;
+  private String name, address, contactNumber, email;
 
-  public Supplier(String id, String name, String contactName, String contactNumber, String email) {
-    this.id = UUID.randomUUID().toString();
+  public Supplier(String name, String address, String contactNumber, String email) {
     this.name = name;
-    this.contactName = contactName;
+    this.address = address;
     this.contactNumber = contactNumber;
     this.email = email;
   }
 
-  public String getID() {
+  public ObjectId getID() {
     return id;
   }
 
@@ -21,8 +21,8 @@ public class Supplier {
     return name;
   }
 
-  public String getContactName() {
-    return contactName;
+  public String getAddress() {
+    return address;
   }
 
   public String getContactNumber() {
@@ -32,4 +32,9 @@ public class Supplier {
   public String getEmail() {
     return email;
   }
+
+  public void setID(ObjectId id) {
+    this.id = id;
+  }
+
 }
