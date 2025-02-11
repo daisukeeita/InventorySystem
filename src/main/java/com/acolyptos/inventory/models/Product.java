@@ -7,12 +7,14 @@ public class Product {
   private ObjectId id;
   private String name;
   private ObjectId categoryID;
+  private ObjectId supplierID;
   private double price;
   private int stockQuantity;
 
-  public Product(String name, ObjectId categoryID, double price, int stockQuantity) {
+  public Product(String name, ObjectId categoryID, ObjectId supplierID, double price, int stockQuantity) {
     this.name = name;
     this.categoryID = categoryID;
+    this.supplierID = supplierID;
     this.price = price;
     this.stockQuantity = stockQuantity;
   }
@@ -29,11 +31,15 @@ public class Product {
     return categoryID;
   }
 
+  public ObjectId getSupplierID() {
+    return supplierID;
+  }
+
   public double getPrice() {
     return price;
   }
 
-  public int stockQuantity() {
+  public int getStockQuantity() {
     return stockQuantity;
   }
 
