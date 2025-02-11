@@ -1,67 +1,59 @@
 package com.acolyptos.inventory.models;
 
+import org.bson.types.ObjectId;
+
 public class Product {
-  private int id, supplierID, stockQuantity;
-  private String name, category;
+
+  private ObjectId id;
+  private String name;
+  private ObjectId categoryID;
   private double price;
+  private int stockQuantity;
 
-  public Product(int id, String name, String category, int stockQuantity, double price, int supplierID) {
-    this.id = id;
+  public Product(String name, ObjectId categoryID, double price, int stockQuantity) {
     this.name = name;
-    this.category = category;
-    setStockQuantity(stockQuantity);
-    setPrice(price);
-    this.supplierID = supplierID;
+    this.categoryID = categoryID;
+    this.price = price;
+    this.stockQuantity = stockQuantity;
   }
 
-  public int getID() {
+  public ObjectId getID() {
     return id;
-  }
-
-  public int getSupplierID() {
-    return supplierID;
-  }
-
-  public int getStockQuantity() {
-    return stockQuantity;
   }
 
   public String getName() {
     return name;
   }
 
-  public String getCategory() {
-    return category;
+  public ObjectId getCategoryID() {
+    return categoryID;
   }
 
   public double getPrice() {
     return price;
   }
 
-  // Basic Validation for Product Price
+  public int stockQuantity() {
+    return stockQuantity;
+  }
+
+  public void setID(ObjectId id) {
+    this.id = id;
+  }
+
   public void setPrice(double price) {
-    if (price >= 0) {
-      this.price = price;
-    } else {
+    if (price < 0) {
       throw new IllegalArgumentException("Price cannot be negative.");
     }
+
+    this.price = price;
   }
 
-  // Basic Validation for Stock Quantity
   public void setStockQuantity(int stockQuantity) {
-    if (stockQuantity >= 0) {
-      this.stockQuantity = stockQuantity;
-    } else {
-      throw new IllegalArgumentException("Stock Quantity cannot be negative.");
+    if (stockQuantity < 0) {
+      throw new IllegalArgumentException("Stock quantity cannot be negative.");
     }
-  }
 
-  // Basic Validation of Update Stock Quantity
-  public void updateStock(int quantitySold) {
-    if (quantitySold > 0 && stockQuantity >= quantitySold) {
-      stockQuantity -= quantitySold;
-    } else {
-      throw new IllegalArgumentException("Invalid quantity or insufficient stock.");
-    }
+    this.stockQuantity = stockQuantity;
   }
 }
