@@ -42,7 +42,6 @@ public class EmployeeRepository {
   }
 
   // Find Employee by ID
-  // TODO: Research for the correct syntax for finding an Employee ID
   public Employee findEmployeeByID(ObjectId id) {
     Document doc = employeeCollection.find(Filters.eq("_id", id)).first();
 
