@@ -9,6 +9,8 @@ import com.acolyptos.inventory.repositories.SupplierRepository;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
+
 public class ProductService {
 
   private final ProductRepository productRepository;
@@ -30,8 +32,17 @@ public class ProductService {
       System.out.println("Category not Found: " + categoryName);
     }
 
+    if (supplier == null) {
+      System.out.println("Supplier not Found: " + supplierName);
+    }
+
     Product product = new Product(name, category.getID(), supplier.getID(), price, stockQuantity);
     productRepository.insertProduct(product);
+  }
+
+  // List All Products
+  public List<Product> listAllProducts() {
+    return productRepository.getAllProducts();
   }
 
   // List Products by Category
@@ -43,6 +54,12 @@ public class ProductService {
     }
 
     return productRepository.getProductsByCategory(category.getID());
+  }
+
+  // Update a Product
+  public void updateProduct(ObjectId id, String name, ObjectId categoryID, ObjectId supplierID, double price,
+      int stockQuantity) {
+    productRepository.updateProduct(id, name, categoryID, supplierID, price, stockQuantity);
   }
 
 }

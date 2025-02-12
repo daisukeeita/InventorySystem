@@ -7,6 +7,8 @@ import com.acolyptos.inventory.repositories.RoleRepository;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
+
 public class EmployeeService {
 
   private final EmployeeRepository employeeRepository;
@@ -33,5 +35,25 @@ public class EmployeeService {
   // Get All Employees
   public List<Employee> listEmployees() {
     return employeeRepository.getAllEmployees();
+  }
+
+  // Get an Employee by ID
+  public Employee getEmployeeById(ObjectId id) {
+    return employeeRepository.findEmployeeByID(id);
+  }
+
+  // Get an Employee by Name
+  public Employee getEmployeeByName(String name) {
+    return employeeRepository.findEmployeeByName(name);
+  }
+
+  // Update Employee
+  public void updateEmployee(ObjectId id, String name, String email, ObjectId roleID) {
+    employeeRepository.updateEmployee(id, name, email, roleID);
+  }
+
+  // Delete Employee
+  public void deleteEmployee(ObjectId id) {
+    employeeRepository.deleteEmployee(id);
   }
 }
