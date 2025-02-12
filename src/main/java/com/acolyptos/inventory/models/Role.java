@@ -6,8 +6,7 @@ public class Role {
   private ObjectId id;
   private String name;
 
-  public Role(ObjectId id, String name) {
-    this.id = id;
+  public Role(String name) {
     this.name = name;
   }
 
@@ -17,5 +16,9 @@ public class Role {
 
   public String getRoleName() {
     return name;
+  }
+
+  public void setID(ObjectId id) {
+    this.id = id;
   }
 }

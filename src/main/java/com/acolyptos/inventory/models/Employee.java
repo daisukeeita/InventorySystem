@@ -30,6 +30,10 @@ public class Employee {
     return roleID;
   }
 
+  public void setID(ObjectId id) {
+    this.id = id;
+  }
+
   public void assistCustomer() {
     System.out.println(name + " is assisting a Customer.");
   }

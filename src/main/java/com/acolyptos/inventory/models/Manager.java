@@ -30,6 +30,10 @@ public class Manager {
     return roleID;
   }
 
+  public void setID(ObjectId id) {
+    this.id = id;
+  }
+
   public void manageStore() {
     System.out.println(name + " is managing the Store.");
   }
