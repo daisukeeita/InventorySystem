@@ -48,5 +48,5 @@ InventorySystem
 - [x] Insert and retrieve Employees and Managers
 - [x] Assign roles to Employees and Managers
 - [ ] Fetch Role Names instead of just IDs
-- [ ] Implement Update and Delete for Employees
+- [x] Implement Update and Delete for Employees
 - [ ] Implement Inventory Stock Updates
