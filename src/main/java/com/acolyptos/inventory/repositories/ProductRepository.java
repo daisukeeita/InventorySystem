@@ -5,8 +5,10 @@ import com.acolyptos.inventory.models.Product;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
 
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
@@ -33,19 +35,51 @@ public class ProductRepository {
     System.out.println("Product inserted successfully: " + product.getName());
   }
 
-  // Get Products Based on category
-  public List<Product> getProductsByCategory(ObjectId id) {
+  // Get all Products
+  public List<Product> getAllProducts() {
     List<Product> products = new ArrayList<>();
 
-    for (Document doc : productCollection.find(Filters.eq("categoryID", id))) {
-      products.add(new Product(
-          doc.getString("name"),
-          doc.getObjectId("categoryID"),
-          doc.getObjectId("supplierID"),
-          doc.getDouble("price"),
-          doc.getInteger("stockQuantity")));
+    for (Document doc : productCollection.find()) {
+      Product product = new Product(doc.getString("name"), doc.getObjectId("categoryID"), doc.getObjectId("supplierID"),
+          doc.getDouble("price"), doc.getInteger("stockQuantity"));
+      product.setID(doc.getObjectId("_id"));
     }
 
     return products;
+  }
+
+  // Get Products Based on category
+  public List<Product> getProductsByCategory(ObjectId categoryId) {
+    List<Product> products = new ArrayList<>();
+
+    for (Document doc : productCollection.find(Filters.eq("categoryID", categoryId))) {
+      Product product = new Product(doc.getString("name"), doc.getObjectId("categoryID"), doc.getObjectId("supplierID"),
+          doc.getDouble("price"), doc.getInteger("stockQuantity"));
+      product.setID(doc.getObjectId("_id"));
+    }
+
+    return products;
+  }
+
+  // Update a Product
+  public void updateProduct(ObjectId id, String name, ObjectId categoryID, ObjectId supplierID, Double price,
+      Integer stockQuantity) {
+    List<Bson> values = new ArrayList<>();
+
+    if (name != null && !name.isBlank()) {
+      values.add(Updates.set("name", name));
+    }
+    if (categoryID != null) {
+      values.add(Updates.set("categoryID", categoryID));
+    }
+    if (supplierID != null) {
+      values.add(Updates.set("supplierID", supplierID));
+    }
+    if (price != null) {
+      values.add(Updates.set("price", price));
+    }
+    if (stockQuantity != null) {
+      values.add(Updates.set("stockQuantity", stockQuantity));
+    }
   }
 }

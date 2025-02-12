@@ -5,6 +5,7 @@ import com.acolyptos.inventory.models.Category;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.result.DeleteResult;
 
 import org.bson.Document;
 
@@ -69,6 +70,17 @@ public class CategoryRepository {
     }
 
     return null;
+  }
+
+  // Delete a Category
+  public void deleteCategory(ObjectId id) {
+    DeleteResult result = categoryCollection.deleteOne(Filters.eq("_id", id));
+
+    if (result.getDeletedCount() > 0) {
+      System.out.println("Category deleted successfully.");
+    } else {
+      System.out.println("Category not Found.");
+    }
   }
 
 }
