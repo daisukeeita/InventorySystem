@@ -56,6 +56,16 @@ public class ProductService {
     return productRepository.getProductsByCategory(category.getID());
   }
 
+  // Find Product by Name
+  public Product findProductByName(String name) {
+    return productRepository.getProductByName(name);
+  }
+
+  // Find Product By ID
+  public Product findProductByID(ObjectId id) {
+    return productRepository.getProductByID(id);
+  }
+
   // Update a Product
   public void updateProduct(ObjectId id, String name, ObjectId categoryID, ObjectId supplierID, double price,
       int stockQuantity) {
