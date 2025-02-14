@@ -2,20 +2,22 @@
 
 ## Project Overview
 
-This is a simple Inventory Management System designed for _mini-mart_ that sells items similar to a _wet market_. The system includes **manual entry** for stock, **categorization of products**, and **employee management**.
-It is built using **Java** and **MongoDB(Atlas)**.
+This is a simple inventory management system designed for a mini-mart setup with product categories similar to those found in wet markets. The system is built using Java and MongoDB(Atlas)and supports basic CRUD operations for managing employees, products, suppliers, sales transactions, and stock management.
 
 ## Features
 
-- **Product Management**: Add, update, and retrieve product details.
-- **Role-Based Employee System**: Supports Manager and Employees with predefined roles.
-- **MongoDB Atlas Integration**: Stores inventory and employee data.
+- _Employee and Manager Management_: CRUD operations for managing employees and managers, with role-based control.
+- _Product and Category Management_: Predefined product categories with the ability to add, update, and remove items.
+- _Sales Transactions_: Register sales, update stock levels accordingly
+- _Supplier Management_: Manage supplier details
+- _MongoDB Integration_: Uses MongoDB Atlas for storing and retrieving data.
 
 ## Tech Stacks
 
 - **Backend**: Java
 - **Database**: MongoDB Atlas
 - **ORM**: MongoDB Java Driver
+- _Environment Variables_: dotenv
 
 ## Folder Structure
 
@@ -44,6 +46,35 @@ InventorySystem
 - **managers**: Stores manager details with assigned role IDs.
 
 ## TODO List
+
+### Back-end (MongoDB + Java)
+
+- [x] CRUD Operations for Employees, Managers, and Roles
+- [x] CRUD Operations for Suppliers, Categories, and Products
+- [x] CRUD Operations for Sales and Sales Items
+- [x] Sales Transactions and stock updates logic
+
+- [ ] Implement User Authentication System (Login System)
+
+- [ ] Error Handling and Validation
+
+### Front-end (To be decided)
+
+- [ ] Decide on Front-end Framework
+
+  - [ ] React (Typescript/JavaScript)
+  - [ ] JavaFX (Java-based UI)
+
+- [ ] Basic UI Components
+
+  - [ ] Login Page
+  - [ ] Dashboard (view Inventory, Sales, etc.)
+  - [ ] Product Management (add/update/delete products)
+  - [ ] Sales Entry Form (record customer purchases)
+
+- [ ] Connect Front-end with Back-end
+
+  - [ ] Use API calls (e.g. REST API) to interact with the back-end
 
 - [x] Insert and retrieve Employees and Managers
 - [x] Assign roles to Employees and Managers
