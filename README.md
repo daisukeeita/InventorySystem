@@ -6,18 +6,18 @@ This is a simple inventory management system designed for a mini-mart setup with
 
 ## Features
 
-- _Employee and Manager Management_: CRUD operations for managing employees and managers, with role-based control.
-- _Product and Category Management_: Predefined product categories with the ability to add, update, and remove items.
-- _Sales Transactions_: Register sales, update stock levels accordingly
-- _Supplier Management_: Manage supplier details
-- _MongoDB Integration_: Uses MongoDB Atlas for storing and retrieving data.
+- **Employee and Manager Management**: CRUD operations for managing employees and managers, with role-based control.
+- **Product and Category Management**: Predefined product categories with the ability to add, update, and remove items.
+- **Sales Transactions**: Register sales, update stock levels accordingly
+- **Supplier Management**: Manage supplier details
+- **MongoDB Integration**: Uses MongoDB Atlas for storing and retrieving data.
 
 ## Tech Stacks
 
 - **Backend**: Java
 - **Database**: MongoDB Atlas
 - **ORM**: MongoDB Java Driver
-- _Environment Variables_: dotenv
+- **Environment Variables**: dotenv
 
 ## Folder Structure
 
