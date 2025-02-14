@@ -1,9 +1,15 @@
 package com.acolyptos.inventory.database;
 
 import io.github.cdimascio.dotenv.Dotenv;
+
+import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
+
+import org.bson.codecs.configuration.CodecRegistry;
+import org.bson.codecs.configuration.CodecRegistries;
+import org.bson.codecs.pojo.PojoCodecProvider;
 
 public class MongoDB {
 
@@ -31,7 +37,19 @@ public class MongoDB {
     final String URI = dotenv.get("MONGO_URI");
 
     if (mongoClient == null) {
-      mongoClient = MongoClients.create(URI);
+      CodecRegistry pojoCodecRegistry = CodecRegistries
+          .fromProviders(PojoCodecProvider.builder().automatic(true).build());
+
+      CodecRegistry codecRegistry = CodecRegistries.fromRegistries(
+          MongoClientSettings.getDefaultCodecRegistry(),
+          pojoCodecRegistry);
+
+      MongoClientSettings settings = MongoClientSettings.builder()
+          .applyConnectionString(new com.mongodb.ConnectionString(URI))
+          .codecRegistry(codecRegistry)
+          .build();
+
+      mongoClient = MongoClients.create(settings);
       database = mongoClient.getDatabase(DB_NAME);
 
       System.out.println("Succesfully Connected to the MongoDB Atlas.");
