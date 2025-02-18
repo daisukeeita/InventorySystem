@@ -8,6 +8,7 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.UpdateResult;
 import com.mongodb.client.result.DeleteResult;
+import com.mongodb.client.result.InsertOneResult;
 
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -25,14 +26,12 @@ public class ManagerRepository {
   }
 
   // Insert Manager
-  public void insertManager(Manager manager) {
+  public InsertOneResult insertManager(Manager manager) {
     Document doc = new Document("name", manager.getName())
         .append("email", manager.getEmail())
         .append("roleID", manager.getRoleID());
 
-    managerCollection.insertOne(doc);
-
-    System.out.println("Manager inserted successfully.");
+    return managerCollection.insertOne(doc);
   }
 
   // Get All Managers
