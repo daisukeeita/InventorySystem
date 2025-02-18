@@ -54,7 +54,9 @@ InventorySystem
 - [x] CRUD Operations for Sales and Sales Items
 - [x] Sales Transactions and stock updates logic
 
-- [ ] Implement User Authentication System (Login System)
+- [x] Implement User Authentication System (Login System)
+
+  - [ ] Check if User Registration and Login is working and stable
 
 - [ ] Error Handling and Validation
 
