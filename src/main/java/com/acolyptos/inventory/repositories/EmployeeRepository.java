@@ -8,6 +8,7 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.UpdateResult;
 import com.mongodb.client.result.DeleteResult;
+import com.mongodb.client.result.InsertOneResult;
 
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -25,14 +26,12 @@ public class EmployeeRepository {
   }
 
   // Insert Employee
-  public void insertEmployee(Employee employee) {
+  public InsertOneResult insertEmployee(Employee employee) {
     Document doc = new Document("name", employee.getName())
         .append("email", employee.getEmail())
         .append("roleID", employee.getRoleID());
 
-    employeeCollection.insertOne(doc);
-
-    System.out.println("Employee inserted succesfully.");
+    return employeeCollection.insertOne(doc);
   }
 
   // Get All Employees
