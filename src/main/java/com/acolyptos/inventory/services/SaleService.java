@@ -6,12 +6,8 @@ import com.acolyptos.inventory.models.Product;
 import com.acolyptos.inventory.repositories.ProductRepository;
 import com.acolyptos.inventory.repositories.SaleRepository;
 
-import com.acolyptos.inventory.services.ProductService;
-
-import org.bson.Document;
 import org.bson.types.ObjectId;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SaleService {
