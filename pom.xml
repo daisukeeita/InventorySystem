@@ -44,14 +44,22 @@
       </dependency>
 
 
-    <!-- Spring Security -->
-    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+        <!-- Spring Boot Starter Security -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
       <dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-security</artifactId>
           <version>3.4.2</version>
       </dependency>
 
+
+        <!-- Spring Boot Starter Web -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-web</artifactId>
+          <version>3.4.2</version>
+      </dependency>
   </dependencies>
 </project>
 
